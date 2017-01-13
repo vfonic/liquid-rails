@@ -1,5 +1,6 @@
 require 'liquid-rails/version'
 require 'liquid'
+require 'liquid-rails/liquid_monkey_patch'
 require 'kaminari'
 require 'active_support/concern'
 
