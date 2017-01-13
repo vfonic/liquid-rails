@@ -19,7 +19,7 @@ module Liquid
           next if method_defined?(attr)
 
           define_method(attr) do
-            object.send(attr) if object.respond_to?(attr, true)
+            object.send(attr)
           end
         end
       end
@@ -31,7 +31,7 @@ module Liquid
           Liquid::Rails::CollectionDrop
         else
           if self == Liquid::Rails::Drop
-            resource.drop_class || Liquid::Rails::Drop
+            resource.drop_class
           else
             self
           end

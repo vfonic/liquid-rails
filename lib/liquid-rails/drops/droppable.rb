@@ -14,7 +14,7 @@ module Liquid
 
       module ClassMethods
         def drop_class
-          "#{self.name}Drop".safe_constantize
+          "#{self.name}Drop".constantize
         end
       end
     end
