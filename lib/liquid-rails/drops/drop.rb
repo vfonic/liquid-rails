@@ -106,6 +106,14 @@ module Liquid
         attributes[method.to_s]
       end
 
+      def liquid_method_missing(method)
+        return nil unless @context && @context.strict_variables
+        raise ::Liquid::UndefinedDropMethod, <<~HEREDOC
+          undefined method #{method} for #{self.class}
+          Did you forget to add it to `attributes`?
+        HEREDOC
+      end
+
       def inspect
         "#<#{self.class.name} @object: #{object.inspect} @attributes: #{attributes.inspect}>"
       end
