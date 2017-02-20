@@ -32,24 +32,44 @@ module Liquid
   #
   #   context['bob']  #=> nil  class Context
   class Context
-    def handle_error(e, line_number = nil, raw_token = nil)
-      if e.is_a?(Liquid::Error)
-        e.template_name ||= template_name
-        e.line_number ||= line_number
+    # Fetches an object starting at the local scope and then moving up the hierachy
+    def find_variable(key)
+      # This was changed from find() to find_index() because this is a very hot
+      # path and find_index() is optimized in MRI to reduce object allocation
+      index = @scopes.find_index { |s| s.key?(key) }
+      scope = @scopes[index] if index
+
+      variable = nil
+
+      if scope.nil?
+        variable_is_nil = @environments.any? { |e| e.has_key?(key) && e[key].nil? }
+        unless variable_is_nil
+          @environments.each do |e|
+            variable = lookup_and_evaluate(e, key)
+            unless variable.nil?
+              scope = e
+              break
+            end
+          end
+        end
       end
-      errors.push(e)
-      exception_renderer.call(e).to_s
+
+      scope ||= @environments.last || @scopes.last
+      variable ||= lookup_and_evaluate(scope, key) unless variable_is_nil
+
+      variable = variable.to_liquid
+      variable.context = self if variable.respond_to?(:context=)
+
+      variable
     end
   end
 
   class Include < Tag
     def read_template_from_file_system(context)
       @variable_name_expr = ''
-      # rubocop:disable all
       file_system = context.registers[:file_system] || Liquid::Template.file_system
 
       file_system.read_template_file(context.evaluate(@template_name_expr), context)
-      # rubocop:enable all
     end
   end
 
