@@ -1,4 +1,24 @@
 module Liquid
+  # A Liquid file system is a way to let your templates retrieve other templates for use with the include tag.
+  #
+  # You can implement subclasses that retrieve templates from the database, from the file system using a different
+  # path structure, you can provide them as hard-coded inline strings, or any manner that you see fit.
+  #
+  # You can add additional instance variables, arguments, or methods as needed.
+  #
+  # Example:
+  #
+  #   Liquid::Template.file_system = Liquid::LocalFileSystem.new(template_path)
+  #   liquid = Liquid::Template.parse(template)
+  #
+  # This will parse the template with a LocalFileSystem implementation rooted at 'template_path'.
+  class BlankFileSystem
+    # Called by Liquid to retrieve a template file
+    def read_template_file(_template_path, _context)
+      raise FileSystemError, "This liquid context does not allow includes."
+    end
+  end
+
   # Context keeps the variable stack and resolves variables, as well as keywords
   #
   #   context['variable'] = 'testing'
@@ -22,23 +42,14 @@ module Liquid
     end
   end
 
-  # A Liquid file system is a way to let your templates retrieve other templates for use with the include tag.
-  #
-  # You can implement subclasses that retrieve templates from the database, from the file system using a different
-  # path structure, you can provide them as hard-coded inline strings, or any manner that you see fit.
-  #
-  # You can add additional instance variables, arguments, or methods as needed.
-  #
-  # Example:
-  #
-  #   Liquid::Template.file_system = Liquid::LocalFileSystem.new(template_path)
-  #   liquid = Liquid::Template.parse(template)
-  #
-  # This will parse the template with a LocalFileSystem implementation rooted at 'template_path'.
-  class BlankFileSystem
-    # Called by Liquid to retrieve a template file
-    def read_template_file(_template_path, _context)
-      raise FileSystemError, "This liquid context does not allow includes."
+  class Include < Tag
+    def read_template_from_file_system(context)
+      @variable_name_expr = ''
+      # rubocop:disable all
+      file_system = context.registers[:file_system] || Liquid::Template.file_system
+
+      file_system.read_template_file(context.evaluate(@template_name_expr), context)
+      # rubocop:enable all
     end
   end
 
