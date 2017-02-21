@@ -118,6 +118,10 @@ module Liquid
         "#<#{self.class.name} @object: #{object.inspect} @attributes: #{attributes.inspect}>"
       end
 
+      def ==(other)
+        other.present? && other.object == @object
+      end
+
       protected
 
         attr_reader :object
