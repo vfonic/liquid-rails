@@ -5,7 +5,7 @@ notifications:
   email: false
 addons:
   code_climate:
-    repo_token: 891d362268d07d6ff0f5534f92252b6195f6be8795054d3627643eb6314a8c9e
+    repo_token: 19eacae3f704e69e605854bd8e178e910a808a40ed7de846e87d89a0aec47a0a
 after_success:
   - bundle exec codeclimate-test-reporter
 cache: bundler

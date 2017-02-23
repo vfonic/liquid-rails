@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'liquid',   '>= 3.0.0'
   spec.add_dependency 'kaminari', '>= 0.16.1'
 
+  spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'rails',       '~> 5'
   spec.add_development_dependency 'rspec-rails', '~> 3.2'
   spec.add_development_dependency 'guard-rspec', '~> 4.5.0'
