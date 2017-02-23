@@ -10,6 +10,5 @@ after_success:
   - bundle exec codeclimate-test-reporter
 cache: bundler
 script:
-  - bundle exec rubocop
   - bundle exec rspec
 sudo: false
