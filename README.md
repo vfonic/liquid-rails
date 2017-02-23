@@ -1,10 +1,10 @@
-# Liquid-Rails
+# Liquid4-Rails5
 
-[![Build Status](https://travis-ci.org/vfonic/liquid4-rails.svg?branch=master)](https://travis-ci.org/vfonic/liquid4-rails)
-[![Code Climate](https://codeclimate.com/github/vfonic/liquid4-rails/badges/gpa.svg)](https://codeclimate.com/github/vfonic/liquid4-rails)
-[![Test Coverage](https://codeclimate.com/github/vfonic/liquid4-rails/badges/coverage.svg)](https://codeclimate.com/github/vfonic/liquid4-rails/coverage)
-[![Gem Version](https://badge.fury.io/rb/liquid4-rails.svg)](http://badge.fury.io/rb/liquid4-rails)
-[![security](https://hakiri.io/github/vfonic/liquid4-rails/master.svg)](https://hakiri.io/github/vfonic/liquid4-rails/master)
+[![Build Status](https://travis-ci.org/vfonic/liquid4-rails5.svg?branch=master)](https://travis-ci.org/vfonic/liquid4-rails5)
+[![Code Climate](https://codeclimate.com/github/vfonic/liquid4-rails5/badges/gpa.svg)](https://codeclimate.com/github/vfonic/liquid4-rails5)
+[![Test Coverage](https://codeclimate.com/github/vfonic/liquid4-rails5/badges/coverage.svg)](https://codeclimate.com/github/vfonic/liquid4-rails5/coverage)
+[![Gem Version](https://badge.fury.io/rb/liquid4-rails5.svg)](http://badge.fury.io/rb/liquid4-rails5)
+[![security](https://hakiri.io/github/vfonic/liquid4-rails5/master.svg)](https://hakiri.io/github/vfonic/liquid4-rails5/master)
 [![git.legal](https://git.legal/projects/3620/badge.svg?key=5c097d05a251758abac3 "Number of libraries approved")](https://git.legal/projects/3620)
 
 It allows you to render `.liquid` templates with layout and partial support. It also provides filters, tags, drops class to be used inside your liquid template.
