@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'liquid-rails/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'liquid-rails'
+  spec.name          = 'liquid4-rails'
   spec.version       = Liquid::Rails::VERSION
-  spec.authors       = ['Chamnap Chhorn']
-  spec.email         = ['chamnapchhorn@gmail.com']
+  spec.authors       = ['Viktor Fonic']
+  spec.email         = ['viktor.fonic@gmail.com']
   spec.summary       = %q{Renders liquid templates with layout and partial support}
   spec.description   = %q{It allows you to render .liquid templates with layout and partial support. It also provides filters, tags, drops class to be used inside your liquid template.}
   spec.homepage      = ''
