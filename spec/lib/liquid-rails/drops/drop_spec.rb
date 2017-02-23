@@ -31,10 +31,9 @@ module Liquid
             expect(drop).to be_instance_of(ProfileDrop)
           end
 
-          it "instantitates with `Liquid::Rails::Drop` when its inferred drop class doesn't exist" do
-            drop = Liquid::Rails::Drop.dropify(Model.new)
-
-            expect(drop).to be_instance_of(Liquid::Rails::Drop)
+          it "raises NameError when its inferred drop class doesn't exist" do
+            expect{ Liquid::Rails::Drop.dropify(Model.new) }
+              .to raise_error(NameError)
           end
 
           it "instantitates with the caller drop class" do

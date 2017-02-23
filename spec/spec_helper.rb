@@ -38,5 +38,5 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.include Capybara::RSpecMatchers
   config.include ActiveSupport::Testing::SetupAndTeardown
-  config.include ActionController::TestCase::Behavior
+  config.include ActionDispatch::IntegrationTest::Behavior
 end

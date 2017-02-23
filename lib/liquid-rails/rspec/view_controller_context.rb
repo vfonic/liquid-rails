@@ -7,11 +7,8 @@ module Liquid
         def setup_view_and_controller
           @view                 = ActionView::Base.new
           @controller           = ApplicationController.new
-          @request              = ActionController::TestRequest.new('PATH_INFO' => '/')
-          @response             = ActionController::TestResponse.new
-          @response.request     = @request
+          @request              = ActionDispatch::TestRequest.create('PATH_INFO' => '/')
           @controller.request   = @request
-          @controller.response  = @response
           @controller.params    = {}
           @view.assign_controller(@controller)
           @view.class.send(:include, @controller._helpers)
