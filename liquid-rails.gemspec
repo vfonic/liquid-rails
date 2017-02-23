@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['viktor.fonic@gmail.com']
   spec.summary       = %q{Renders liquid templates with layout and partial support}
   spec.description   = %q{It allows you to render .liquid templates with layout and partial support. It also provides filters, tags, drops class to be used inside your liquid template.}
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/vfonic/liquid4-rails5'
   spec.license       = 'MIT'
   spec.required_ruby_version     = '>= 2.0.0'
   spec.required_rubygems_version = '>= 1.8.11'
@@ -23,4 +23,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails',    '>= 5'
   spec.add_dependency 'liquid',   '>= 3.0.0'
   spec.add_dependency 'kaminari', '>= 0.16.1'
+
+  spec.add_development_dependency 'rails',       '~> 5'
+  spec.add_development_dependency 'rspec-rails', '~> 3.2'
+  spec.add_development_dependency 'guard-rspec', '~> 4.5.0'
+  spec.add_development_dependency 'capybara',    '~> 2.4.1'
+  spec.add_development_dependency 'pry-rails'
+  spec.add_development_dependency 'simplecov'
 end
