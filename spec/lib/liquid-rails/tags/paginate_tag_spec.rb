@@ -136,25 +136,6 @@ module Liquid
           expect_template_result("{% paginate post.comments by 2 %}{{ paginate | default_pagination }}{% endpaginate %}", %|<span class=\"prev\"><a href=\"/?page=2\" rel=\"prev\">&laquo; Previous</a></span> <span class=\"page\"><a href=\"/?page=1\">1</a></span> <span class=\"page\"><a href=\"/?page=2\">2</a></span> <span class=\"page current\">3</span>|, { 'post' => @post_drop })
         end
       end
-
-      context 'bootstrap_pagination' do
-        after(:all)  { controller.params[:page] = nil }
-
-        it 'is in the first_page' do
-          controller.params[:page] = 1
-          expect_template_result("{% paginate post.comments by 2 %}{{ paginate | bootstrap_pagination }}{% endpaginate %}", %|<nav><ul class="pagination "> <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo; Previous</span></a></li> <li class="active"><span>1</span></li> <li><a href="/?page=2">2</a></li> <li><a href="/?page=3">3</a></li> <li><a href="/?page=2" aria-label="Next"><span aria-hidden="true">Next &raquo;</span></a></li> </ul></nav>|, { 'post' => @post_drop })
-        end
-
-        it 'is in the second_page' do
-          controller.params[:page] = 2
-          expect_template_result("{% paginate post.comments by 2 %}{{ paginate | bootstrap_pagination }}{% endpaginate %}", %|<nav><ul class="pagination "> <li><a href="/?page=1" aria-label="Previous"><span aria-hidden="true">&laquo; Previous</span></a></li> <li><a href="/?page=1">1</a></li> <li class="active"><span>2</span></li> <li><a href="/?page=3">3</a></li> <li><a href="/?page=3" aria-label="Next"><span aria-hidden="true">Next &raquo;</span></a></li> </ul></nav>|, { 'post' => @post_drop })
-        end
-
-        it 'is in the last_page' do
-          controller.params[:page] = 3
-          expect_template_result("{% paginate post.comments by 2 %}{{ paginate | bootstrap_pagination }}{% endpaginate %}", %|<nav><ul class="pagination "> <li><a href="/?page=2" aria-label="Previous"><span aria-hidden="true">&laquo; Previous</span></a></li> <li><a href="/?page=1">1</a></li> <li><a href="/?page=2">2</a></li> <li class="active"><span>3</span></li> <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">Next &raquo;</span></a></li> </ul></nav>|, { 'post' => @post_drop })
-        end
-      end
     end
   end
 end
