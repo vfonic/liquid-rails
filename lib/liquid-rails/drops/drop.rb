@@ -28,7 +28,7 @@ module Liquid
       #             Array of products maps to `Liquid::Rails::CollectionDrop`.
       def self.drop_class_for(resource)
         if resource.respond_to?(:to_ary)
-          Liquid::Rails::CollectionDrop
+          ::ActiveRecord::RelationDrop
         else
           if self == Liquid::Rails::Drop
             resource.drop_class

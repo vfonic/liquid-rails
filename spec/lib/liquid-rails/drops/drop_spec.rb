@@ -49,7 +49,7 @@ module Liquid
           it "instantitates with collection drop class" do
             array = [1, 2, 3]
 
-            expect(Liquid::Rails::Drop.dropify(array)).to be_instance_of(Liquid::Rails::CollectionDrop)
+            expect(Liquid::Rails::Drop.dropify(array)).to be_instance_of(ActiveRecord::RelationDrop)
           end
         end
       end
@@ -74,7 +74,7 @@ module Liquid
           end
 
           it '#comments returns as CollectionDrop object' do
-            expect(@post_drop.comments).to be_instance_of(Liquid::Rails::CollectionDrop)
+            expect(@post_drop.comments).to be_instance_of(ActiveRecord::RelationDrop)
           end
 
           it '#recomments returns as CommentsDrop object' do

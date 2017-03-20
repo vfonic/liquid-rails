@@ -3,6 +3,7 @@ require 'liquid'
 require 'liquid-rails/liquid_monkey_patch'
 require 'kaminari'
 require 'active_support/concern'
+require 'active_record'
 
 module Liquid
   module Rails

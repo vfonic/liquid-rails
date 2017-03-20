@@ -14,7 +14,11 @@ module Liquid
 
       module ClassMethods
         def drop_class
-          "#{self.name}Drop".constantize
+          if self.name == 'ActiveRecord::Associations::CollectionProxy'
+            ActiveRecord::RelationDrop
+          else
+            "#{self.name}Drop".constantize
+          end
         end
       end
     end
