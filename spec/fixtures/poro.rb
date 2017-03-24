@@ -52,7 +52,7 @@ CommentDrop = Class.new(Liquid::Rails::Drop) do
 end
 
 ReProfileDrop = Class.new(Liquid::Rails::Drop)
-PostsDrop     = Class.new(ActiveRecord::RelationDrop)
+PostsDrop     = Class.new(Liquid::Rails::CollectionDrop)
 RePostDrop    = Class.new(Liquid::Rails::Drop)
 ReCommentDrop = Class.new(Liquid::Rails::Drop)
-CommentsDrop  = Class.new(ActiveRecord::RelationDrop)
+CommentsDrop  = Class.new(Liquid::Rails::CollectionDrop)

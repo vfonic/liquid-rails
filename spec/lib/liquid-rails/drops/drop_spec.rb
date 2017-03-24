@@ -16,11 +16,6 @@ module Liquid
           expect(profile_drop.name).to eq('Name 1')
           expect(profile_drop.description).to eq('Description 1')
         end
-
-        it '#before_method' do
-          expect(profile_drop.before_method(:name)).to eq(profile_drop.name)
-          expect(profile_drop.before_method(:description)).to eq(profile_drop.description)
-        end
       end
 
       context '#dropify' do
@@ -49,7 +44,7 @@ module Liquid
           it "instantitates with collection drop class" do
             array = [1, 2, 3]
 
-            expect(Liquid::Rails::Drop.dropify(array)).to be_instance_of(ActiveRecord::RelationDrop)
+            expect(Liquid::Rails::Drop.dropify(array)).to be_instance_of(Liquid::Rails::CollectionDrop)
           end
         end
       end
@@ -74,7 +69,7 @@ module Liquid
           end
 
           it '#comments returns as CollectionDrop object' do
-            expect(@post_drop.comments).to be_instance_of(ActiveRecord::RelationDrop)
+            expect(@post_drop.comments).to be_instance_of(Liquid::Rails::CollectionDrop)
           end
 
           it '#recomments returns as CommentsDrop object' do
